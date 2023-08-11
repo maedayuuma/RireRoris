@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <h3 class="table-primary d-inline-flex pl-5 pr-5 mt-5 mb-4">会員一覧</h3>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr class="table-primary">
+            <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+                <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+                <td><%= customer.email %></td>
+              <td><%= customer.status %></td>
+            </tr>
+        </tbody>
+      <% end %>
+      <%= paginate @customers %>
+    </div>
+  </div>
+</div>

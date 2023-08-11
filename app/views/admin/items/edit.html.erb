@@ -1,0 +1,51 @@
+<div class="container">
+ <div class="row mt-4">
+  <div class="col-sm-9 px-sm-0 offset-sm-3">
+   <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-5">商品編集</h3>
+    <%= form_with model: @item, url:admin_item_path, local:true do |f| %>
+     <table class="table table-borderless table-sm">
+
+      <tr>
+        <th style="width:200px;">商品画像</th>
+        <td><%= f.file_field :image %></td>
+      </tr>
+
+      <tr>
+        <th>商品名</th>
+        <th><%= f.text_field :name, size:"38" %></th>
+      </tr>
+
+      <tr>
+        <th>商品説明</th>
+        <th><%= f.text_area :explanation, size:"42x7" %></th>
+      </tr>
+
+      <tr>
+        <th>ジャンル</th>
+        <th><%= f.collection_select(:genre_id, @genres, :id, :name) %></th>
+      </tr>
+
+      <tr>
+        <th>税抜価格</th>
+        <th><%= f.text_field :without_tax_price, size:"30x5" %><th>
+      </tr>
+
+      <tr>
+        <th>販売ステータス</th>
+        <th>
+          <%= f.radio_button :is_sale, :true %>
+          <%= f.label :is_sale_true, "販売中" %>
+
+          <%= f.radio_button :is_sale, :false %>
+          <%= f.label :is_sale_false, "販売停止中" %>
+        </th>
+      </tr>
+    </table>
+
+    <div class="col-sm-9 px-sm-0 offset-sm-3">
+      <%= f.submit "変更を保存",class: "btn btn-success" %>
+    </div>
+      <% end %>
+　　</div>
+  </div>
+</div>
