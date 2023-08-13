@@ -1,4 +1,5 @@
 <div class="card text-white text-center">
+    <%= image_tag 'RireRoris/rireroris.jpeg', size: '380', class: "card-img" %>
   <div class="card-img-overlay">
     <h1 class="display-3 font-weight-bold">RireRoris</h1>
     <div class="font-weight-bold"></div>
@@ -14,6 +15,7 @@
         <% @items.each do |item| %>
 	        <div class="col-md-3">
 		        <%= link_to item_path(item.id) do %>
+		         <%= image_tag item.get_image, size: '200x120' %><br>
 		        <% end %>
 		        <div class="text-left"><%= item.name %></div>
 		        <div class="text-left">¥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %></div>

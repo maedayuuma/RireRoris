@@ -2,13 +2,16 @@
  <h3 class="table-primary d-inline-flex pl-5 pr-5 mt-5">ジャンル一覧・追加</h3>
   <div class="row">
    <div class="col-1 mt-5">
+
     <%= form_with model: @genre, url:admin_genres_path, local:true do |f| %>
-     <table class="table table-border">
+
+     <table class="table table-borderless">
       <tr>
        <th>ジャンル名</th>
-        <th><%= text_field :name, size:"38" %></th>
+        <th><%= f.text_field :name, size:"38" %></th>
        <th><%= f.submit "新規登録",class: "btn btn-primary" %></th>
      </tr>
+     <% end %>
     </table>
 
     <table class="table">
@@ -20,8 +23,7 @@
      </thead>
 
      <tbody>
-      <% @genres do |genre| %>
-       <table class="table table-border">
+      <% @genres.each do |genre| %>
         <tr>
          <th><%= genre.name %></th>
          <th><%= link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-primary" %></th>

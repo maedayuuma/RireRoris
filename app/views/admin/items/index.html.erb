@@ -1,23 +1,29 @@
 <div class="container">
- <h3 class="table-primary d-inline-flex pl-5 pr-5 mt-5">商品一覧</h3>
+ <h4 class="table-primary rounded-pill d-inline-flex pt-2 pb-2 pl-5 pr-5 mt-5">商品一覧</h4>
   <div class="row">
    <div class="col">
-    <table class="table table-borderless">
+    <table class="table table-borderless mt-2">
+
      <tr class="table-primary">
-      <th>商品ID</th>
-       <th>商品名</th>
-        <th class="text-right">税抜き価格</th>
-       <th>GENLE</th>
-      <th class="text-right">STATUS</th>
+
+      <th class="text-center">商品ID</th>
+
+       <th class="text-center">商品名</th>
+
+        <th class="text-center">税抜き価格</th>
+
+       <th class="text-center">ジャンル</th>
+
+      <th class="text-center">ステータス</th>
      </tr>
 
     <% @items.each do |item| %>
      <tr>
-      <td><%= item.id %></td>
-       <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td><%= item.without_tax_price %></td>
-       <td><%= item.jenre.name %></td>
-      <td><%= item.is_sale ? "販売中" : "販売停止中" %></td>
+      <td class="text-center"><%= item.id %></td>
+       <td class="text-center"><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td class="text-center"><%= item.without_tax_price %></td>
+       <td class="text-center"><%= item.genre.name %></td>
+      <td class="text-center"><%= item.is_sale ? "販売中" : "販売停止中" %></td>
      </tr>
     <% end %>
    </table>

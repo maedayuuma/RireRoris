@@ -1,1 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+footer{
+    margin-top: 20px;
+    width: 100%;
+}
