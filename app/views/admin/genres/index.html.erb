@@ -1,7 +1,7 @@
 <div class="container">
  <h3 class="table-primary d-inline-flex pl-5 pr-5 mt-5">ジャンル一覧・追加</h3>
   <div class="row">
-   <div class="col-1 mt-5">
+   <div class="col mt-5">
 
     <%= form_with model: @genre, url:admin_genres_path, local:true do |f| %>
 
@@ -14,7 +14,7 @@
      <% end %>
     </table>
 
-    <table class="table">
+    <table class="table table-bordered">
      <thead class="thead-light">
       <tr>
         <th>ジャンル</th>

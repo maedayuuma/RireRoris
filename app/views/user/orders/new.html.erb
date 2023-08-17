@@ -1,0 +1,58 @@
+<div class="container">
+  <h4 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-4">注文情報入力</h4>
+  <div class="row mt-2">
+  <div class="row">
+    <div class="col">
+
+      <%= form_with model: @order, url: orders_comfirm_path, local: true do |f| %>
+      <h6 class="text-left font-weight-bold">支払い方法</h6>
+      <div>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+      <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+      </div>
+
+      <div>
+      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+      <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+      </div>
+      <h6 class="font-weight-bold">お届け先</h6>
+
+      <%= f.radio_button :address_number, 0, checked: true %>
+      <%= f.label :address_number_0, "ご自身の住所" %>
+
+      <br>
+      〒<%= current_customer.post_code %>
+        <%= current_customer.address %><br>
+        <%= current_customer.first_name %>
+        <%= current_customer.last_name %>
+
+      <br>
+      <%= f.radio_button :address_number, 1 %>
+      <%= f.label :address_number_1, "登録先の住所" %>
+      <br>
+      <%= f.collection_select(:address_id, current_customer.addresses.all, :id, :address) %>
+      <br>
+
+      <%= f.radio_button :address_number, 2 %>
+      <%= f.label :address_number_2, "新しいお届け先" %>
+      <br>
+     <table>
+       <tr>
+      <td class="pr-3 pb-2"><%= f.label :post_code, "郵便番号" %></td>
+      <td><%= f.text_field :post_code %></td>
+       </tr>
+       <tr>
+      <td class="pr-3 pb-2"><%= f.label :address, "住所" %></td>
+      <td><%= f.text_field :address, size: 60 %></td>
+       </tr>
+       <tr>
+      <td><%= f.label :name, "氏名" %></td>
+      <td><%= f.text_field :name %></td>
+      </tr>
+     </table>
+      <div class="row justify-content-center py-5">
+      <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+      </div>
+
+      <% end %>
+      </div>

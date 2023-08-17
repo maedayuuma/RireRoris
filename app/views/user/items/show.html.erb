@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 p-3 mt-4">
+      
+      <%= image_tag @item.get_image, size: '400x240' %>
+        </div>
+          <div class="col-md-6 offset-md-1 p-3 mt-4">
+            <h1 class="font-weight-bold"><%= @item.name %></h1>
+              <h4><%=safe_join(@item.explanation.split("\n"),tag(:br))%></h4>
+            <div class="mt-4">
+          <h4>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
+        </div>
+        
+      <%= form_for @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+          <div class="mt-5">
+            個数 <%= f.select :quantity, *[1..10] %>
+       
+      <% if customer_signed_in? %>
+	      <%= f.submit "カートに入れる", class:'btn btn-success'%>
+	        <% else %>
+	        <button type="button" class="btn btn-success btn-lg" disabled>カートに入れる</button>
+	        <div class="text-danger">ログインして下さい</div>
+	        <% end %>
+	      </div>
+	    <% end %>
+	  </div>
+  </div>
+</div>

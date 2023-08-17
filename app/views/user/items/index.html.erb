@@ -1,0 +1,23 @@
+<div class='container'>
+  <h3 class="font-weight-bold mt-5 mb-2">商品一覧</h3>
+    <div class='row mr-5'>
+
+        <% @items.each do |item| %>
+
+	        <div class="col-md-3 my-3">
+
+		        <%= link_to item_path(item.id) do %>
+
+		          <%= image_tag item.get_image, size: '250x180' %><br>
+		        <% end %>
+		      <div class="text-left"><%= item.name %></div>
+		    <div class="text-left">¥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %></div>
+		  </div>
+	    <% end %>
+   </div>
+ </div>
+
+ <div class="row">
+   <div class="px-5 px-sm-0 mt-4 mx-auto"><%= paginate @items %></div>
+   </div>
+ </div>

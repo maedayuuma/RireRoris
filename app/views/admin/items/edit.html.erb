@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row mt-4">
   <div class="col-sm-9 px-sm-0 offset-sm-3">
-   <h3 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-5">商品編集</h3>
+   <h3 class="table-dark text-light d-inline-flex pl-5 pr-5 mt-4 mb-5">商品編集</h3>
     <%= form_with model: @item, url:admin_item_path, local:true do |f| %>
      <table class="table table-borderless table-sm">
 
@@ -43,7 +43,7 @@
     </table>
 
     <div class="col-sm-9 px-sm-0 offset-sm-3">
-      <%= f.submit "変更を保存",class: "btn btn-success" %>
+      <%= f.submit "変更を保存",class: "btn btn-dark" %>
     </div>
       <% end %>
 　　</div>

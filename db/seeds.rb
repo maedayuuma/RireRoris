@@ -9,3 +9,11 @@ Admin.create!(
    email: 'maeda@yuma',
    password: 'maedayuma'
 )
+
+Tag.create([
+    { name: 'ネックレス' },
+    { name: 'ブレスレット' },
+    { name: 'パワーストーンブレスレット' },
+    { name: 'レディース専用：ブレスレット' },
+    { name: 'メンズ専用：ブレスレット' }
+    ])

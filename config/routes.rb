@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   get "customers/mypage" => "customers#show"
   get "customers/information/edit" => "customers#edit"
   patch "customers/information" => "customers#update"
+
+  resources :posts, only: [:new, :index, :show, :edit, :create, :update, :destroy]
   end
 
   namespace :admin do

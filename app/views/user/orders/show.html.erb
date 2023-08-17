@@ -1,0 +1,84 @@
+<div class="container">
+ <h4 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-4 ml-5">注文履歴詳細</h4>
+  <div class="row ml-3">
+   <div class="col">
+     <strong>注文情報</strong>
+    </p>
+    <table class="table table-bordered">
+
+    <tbody>
+      <tr>
+        <td class="table-secondary"><strong>注文日</strong></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+
+      <tr>
+        <td class="table-secondary"><strong>配送先</strong></td>
+        <td><%= @order.customer.address %></td>
+      </tr>
+
+      <tr>
+        <td class="table-secondary"><strong>支払方法</strong></td>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+
+      <tr>
+        <td class="table-secondary"><strong>ステータス</td>
+        <td><%= @order.status_i18n %></td>
+      </tr>
+    </tbody>
+    </table>
+
+    <P>
+     <strong>注文内容</strong>
+    </P>
+    <table class="table table-bordered">
+      <tbody>
+    　 <tr class="table-secondary">
+        <td><strong>商品</strong></td>
+         <td><strong>単価(税込み)</strong></td>
+         <td><strong>個数</strong></td>
+        <td><strong>小計</strong></td>
+    　  </tr>
+      </tbody>
+
+      <tbody>
+        <% @order_items.each do |order| %>
+        <tr>
+          <td><%= order.item.name %></td>
+            <td><%= order.price %></td>
+            <td><%= order.quantity %></td>
+          <td><%= order.subtotal %></td>
+        </tr>
+      </tbody>
+     <% end %>
+    </table>
+    </div>
+
+    <div class="col-5 ml-5">
+    <p>
+      <strong>請求情報</strong>
+    </p>
+    <table class="table table-bordered">
+
+      <tbody>
+        <tr>
+          <td class="table-secondary"><strong>商品合計</strong></td>
+          <td><%= @order.total_price %><strong></td>
+        </tr>
+
+        <tr>
+          <td class="table-secondary"><strong>配送料</strong></td>
+          <td><%= @shipping_fee %></td>
+        </tr>
+
+        <tr>
+          <td class="table-secondary"><strong>合計金額</strong></td>
+          <td><%= @order.total_price + @shipping_fee %></td>
+        </tr>
+      </tbody>
+     </div>
+    </div>
+   </div>
+  </table>
+

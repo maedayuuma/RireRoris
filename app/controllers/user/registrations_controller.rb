@@ -1,6 +1,33 @@
 # frozen_string_literal: true
 
 class User::RegistrationsController < Devise::RegistrationsController
+  before_action :authenticate_customer!
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def new
+    super
+  end
+  # def new
+    # @customer=Customer.new(sign_up_params)
+  # end
+
+  def create
+    super
+  end
+  # def create
+    # @customer=Customer.new(sign_up_params)
+    # redirect_to request.referer
+  # end
+
+  def after_sign_up_path_for(resource)
+    customers_mypage_path(current_customer.id)
+  end
+
+  private
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :first_name, :last_name, :first_name_kana, :last_name_kana, :post_code, :address, :phone_number])
+  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
