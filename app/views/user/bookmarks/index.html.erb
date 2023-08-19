@@ -1,0 +1,18 @@
+<table>
+  <caption>お気に入り商品一覧</caption>
+
+  <tbody>
+    <% @bookmarks.each do |bookmark| %>
+      <tr>
+        <%= image_tag item.get_image, size: '300x250' %>
+        <td><%= bookmark.item.customer.name %></td>
+        <td>
+          <%= link_to item_path(bookmark.item) do %>
+            <h4>¥<%= bookmark.item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
+          <% end %>
+        </td>
+        <td><%= bookmark.item. %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

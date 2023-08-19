@@ -1,29 +1,78 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 p-3 mt-4">
-      
-      <%= image_tag @item.get_image, size: '400x240' %>
+
+      <%= image_tag @item.get_image, size: '400x350' %>
+
+      <%#お気に入り機能%>
+      <tr>
+        <% if @item.bookmarked_by?(current_customer) %>
+
+          <h3><%= link_to "お気に入り登録済み", item_bookmark_path(item_id: @item), method: :delete %></h3>
+            <% else %>
+          <h3><%= link_to "お気に入り登録", item_bookmark_path(item_id: @item), method: :post %></h3>
+
+        <% end %>
+      </tr>
+
+       <%#レビュー機能%>
+         <div class="mt-5">
+          <h5><strong>評価</strong></h5>
+            <% if @review.errors.present? %>
+              <% @review.errors.full_messages.each do |msg| %>
+                <p><%= msg %></p>
+                  <% end %>
+                    <% end %>
+
+            <%= form_with model: [@item , @review] do |f| %>
+
+              <div class="col-md-6 col-md-offset-3">
+
+                <div class="field mb-3" id="star">
+              </div>
+
+                <%= f.text_area :impression, :class => "form-control" %><br>
+                <%= f.submit "レビュー評価", :class => "btn btn-primary" %>
+              </div>
+
+            <% end %>
+
+        <script>
+          raty(document.querySelector("#star"), {
+            size: 36,
+            starOff: '<%= asset_path('star-off.png') %>',
+            starOn: '<%= asset_path('star-on.png') %>',
+            scoreName: 'review[all_rating]'
+          });
+        </script>
+
+        <%= render partial: "user/items/show_rate", locals: { item: @item, reviews: @reviews, all_rating: @all_rating } %>
+       </div>
+
         </div>
+
           <div class="col-md-6 offset-md-1 p-3 mt-4">
-            <h1 class="font-weight-bold"><%= @item.name %></h1>
+            <h4 class="font-weight-bold"><%= @item.name %></h4>
               <h4><%=safe_join(@item.explanation.split("\n"),tag(:br))%></h4>
             <div class="mt-4">
           <h4>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
         </div>
-        
-      <%= form_for @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-          <div class="mt-5">
-            個数 <%= f.select :quantity, *[1..10] %>
-       
-      <% if customer_signed_in? %>
-	      <%= f.submit "カートに入れる", class:'btn btn-success'%>
-	        <% else %>
+
+        <%= form_for @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <div class="mt-3">
+        個数 <%= f.select :quantity, *[1..10] %>
+
+        <% if customer_signed_in? %>
+	        <%= f.submit "カートに入れる", class:'btn btn-success'%>
+	      <% else %>
 	        <button type="button" class="btn btn-success btn-lg" disabled>カートに入れる</button>
+
 	        <div class="text-danger">ログインして下さい</div>
 	        <% end %>
 	      </div>
 	    <% end %>
+
 	  </div>
   </div>
 </div>

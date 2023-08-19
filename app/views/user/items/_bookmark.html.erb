@@ -1,0 +1,9 @@
+<tbody>
+  <tr>
+    <% if bookmark.bookmarked_by?(bookmark.customer) %>
+      <h3><%= link_to "♡", bookmarks_path(bookmark), method: :delete %></h3>
+    <% else %>
+      <h3><%= link_to "♥", bookmarks_path(bookmark), method: :post %></h3>
+    <% end %>
+  </tr>
+</tbody>

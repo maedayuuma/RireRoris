@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :customers, skip: [:passwords] ,controllers: {
   registrations: "user/registrations",
-  sessions: 'user/sessions'
+  sessions: "user/sessions"
   }
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -13,12 +13,17 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "homes/about"=>"homes#about", as: "about"
 
-  resources :items, only: [:index,:show]
+  resources :items, only: [:index,:show] do
+     resources :reviews, only: [:create]
+     resource :bookmark, only: [:create, :destroy]
+  end
+
+  resources :bookmarks, only: [:index]
 
   delete "/cart_items/destroy_all" => "cart_items#destroy_all"
   resources :cart_items, only: [:index, :update, :destroy, :create]
 
-
+  resources :genres, only: [:show]
 
   post "/orders/comfirm" => "orders#comfirm"
   get "/orders/complete" => "orders#complete"
@@ -31,10 +36,7 @@ Rails.application.routes.draw do
   get "customers/mypage" => "customers#show"
   get "customers/information/edit" => "customers#edit"
   patch "customers/information" => "customers#update"
-
-  resources :posts, only: [:new, :index, :show, :edit, :create, :update, :destroy]
-  end
-
+end
   namespace :admin do
 
   get "/" => "homes#top"
@@ -49,5 +51,5 @@ Rails.application.routes.draw do
 
   resources :orders_details, only: [:update]
 
- end
+  end
 end

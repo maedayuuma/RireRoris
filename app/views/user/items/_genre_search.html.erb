@@ -1,0 +1,17 @@
+<div class="container text-left">
+  <div class="row">
+    <div class="col-3 p-3 mt-4">
+      <h6 class="mb-4"><strong>♦ ネックレス＆ブレスレット ♦</strong></h6>
+        <ul>
+          
+        <% genres.each do |genre| %>
+          
+          <li class="mb-4">
+          
+            <%= link_to genre_path(genre) do %>
+            <%= genre.name %>
+            <% end %>
+          </li>
+            <% end %>
+        </ul>
+      </div>
