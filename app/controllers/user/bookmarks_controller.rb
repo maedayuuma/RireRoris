@@ -2,7 +2,8 @@ class User::BookmarksController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-      @bookmarks = Bookmark.where(item_id)
+     @items = Item.all
+     @bookmarks = Bookmark.where(item_id: @items, customer_id: current_customer.id)
   end
 
   def create

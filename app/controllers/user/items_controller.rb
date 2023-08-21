@@ -1,8 +1,9 @@
 class User::ItemsController < ApplicationController
 
   def index
-    @items = Item.all.page(params[:page]).per(10)
+    @item = Item.all.page(params[:page]).per(10)
     @genres = Genre.all
+    @bookmark = Bookmark.new
   end
 
   def genre_search
@@ -17,6 +18,7 @@ class User::ItemsController < ApplicationController
     @review = Review.new
     @all_rating = '総合評価'
     @bookmark = Bookmark.new
+    @genres = Genre.all
   end
 
 

@@ -1,18 +1,34 @@
-<table>
-  <caption>お気に入り商品一覧</caption>
+<div class="container text-left">
+  <div class="row">
+    <div class="col-3 p-3 mt-4">
+      <table>
+        <h4 class="mb-5">お気に入り一覧</h4>
 
-  <tbody>
-    <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <%= image_tag item.get_image, size: '300x250' %>
-        <td><%= bookmark.item.customer.name %></td>
-        <td>
-          <%= link_to item_path(bookmark.item) do %>
-            <h4>¥<%= bookmark.item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
+          <tbody>
+            <% @bookmarks.each do |bookmark| %>
+
+             <tr>
+               <%= image_tag bookmark.item.get_image, size: '300x250' %>
+
+                            <%#お気に入り機能%>
+
+                <% if @item.bookmarked_by?(current_customer) %>
+
+                  <h3><%= link_to "♥", item_bookmark_path(item_id: @item), method: :delete %></h3>
+                    <% else %>
+                      <h3><%= link_to "♡", item_bookmark_path(item_id: @item), method: :post %></h3>
+                        <% end %>
+
+
+                  <h5 class="mt-3"><%= bookmark.item.name %></h5>
+
+                  <td>
+                <h5>¥<%= bookmark.item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h5>
+              </td>
+            </tr>
           <% end %>
-        </td>
-        <td><%= bookmark.item. %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

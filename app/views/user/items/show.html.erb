@@ -1,19 +1,9 @@
-<div class="container">
+<%= render 'genre_search', genres: @genres %>
+
   <div class="row">
-    <div class="col-md-4 p-3 mt-4">
+    <div class="col-md-9 p-3 mt-4">
 
       <%= image_tag @item.get_image, size: '400x350' %>
-
-      <%#お気に入り機能%>
-      <tr>
-        <% if @item.bookmarked_by?(current_customer) %>
-
-          <h3><%= link_to "お気に入り登録済み", item_bookmark_path(item_id: @item), method: :delete %></h3>
-            <% else %>
-          <h3><%= link_to "お気に入り登録", item_bookmark_path(item_id: @item), method: :post %></h3>
-
-        <% end %>
-      </tr>
 
        <%#レビュー機能%>
          <div class="mt-5">
@@ -24,55 +14,68 @@
                   <% end %>
                     <% end %>
 
-            <%= form_with model: [@item , @review] do |f| %>
 
-              <div class="col-md-6 col-md-offset-3">
+                      <%= form_with model: [@item , @review] do |f| %>
 
-                <div class="field mb-3" id="star">
-              </div>
+                        <div class="col-md-6 col-md-offset-3">
+                          <div class="field mb-3" id="star">
+                            </div>
 
-                <%= f.text_area :impression, :class => "form-control" %><br>
-                <%= f.submit "レビュー評価", :class => "btn btn-primary" %>
-              </div>
+                              <%= f.text_area :impression, :class => "form-control" %><br>
+                                <%= f.submit "レビュー評価", :class => "btn btn-primary" %>
+                                  </div>
 
-            <% end %>
+                                    <% end %>
 
-        <script>
-          raty(document.querySelector("#star"), {
-            size: 36,
-            starOff: '<%= asset_path('star-off.png') %>',
-            starOn: '<%= asset_path('star-on.png') %>',
-            scoreName: 'review[all_rating]'
-          });
-        </script>
+                                    <script>
+                                  raty(document.querySelector("#star"), {
+                                size: 36,
+                              starOff: '<%= asset_path('star-off.png') %>',
+                            starOn: '<%= asset_path('star-on.png') %>',
+                          scoreName: 'review[all_rating]'
+                         });
+                      </script>
 
-        <%= render partial: "user/items/show_rate", locals: { item: @item, reviews: @reviews, all_rating: @all_rating } %>
-       </div>
+                    <%= render partial: "user/items/show_rate", locals: { item: @item, reviews: @reviews, all_rating: @all_rating } %>
+                  </div>
+                </div>
 
-        </div>
+                <div class="col-md-6 offset-md-1 p-3 mt-4">
+                  <h4 class="font-weight-bold"><%= @item.name %></h4>
+                    <h4><%=safe_join(@item.explanation.split("\n"),tag(:br))%></h4>
+                      <div class="mt-4">
+                        <h4>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
+                          </div>
 
-          <div class="col-md-6 offset-md-1 p-3 mt-4">
-            <h4 class="font-weight-bold"><%= @item.name %></h4>
-              <h4><%=safe_join(@item.explanation.split("\n"),tag(:br))%></h4>
-            <div class="mt-4">
-          <h4>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
-        </div>
+                            <%#お気に入り機能%>
+	                            <tr>
+                                <% if @item.bookmarked_by?(current_customer) %>
 
-        <%= form_for @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
-          <%= f.hidden_field :item_id, :value => @item.id %>
-          <div class="mt-3">
-        個数 <%= f.select :quantity, *[1..10] %>
+                                  <h3><%= link_to "♥", item_bookmark_path(item_id: @item), method: :delete %></h3>
+                                    <% else %>
+                                  <h3><%= link_to "♡", item_bookmark_path(item_id: @item), method: :post %></h3>
+                                <% end %>
+                              </tr>
 
-        <% if customer_signed_in? %>
-	        <%= f.submit "カートに入れる", class:'btn btn-success'%>
-	      <% else %>
-	        <button type="button" class="btn btn-success btn-lg" disabled>カートに入れる</button>
+                            <%# カート機能 %>
+                              <%= form_for @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+                                <%= f.hidden_field :item_id, :value => @item.id %>
+                                  <div class="mt-3">
+                                    数量            <%= f.select :quantity, *[1..10] %>
 
-	        <div class="text-danger">ログインして下さい</div>
-	        <% end %>
-	      </div>
-	    <% end %>
+                                    <tr>
+                                  <% if customer_signed_in? %>
 
-	  </div>
-  </div>
-</div>
+	                              <%= f.submit "カートに入れる", class:'btn btn-success'%>
+	                            <% else %>
+	                          <button type="button" class="btn btn-success btn-lg" disabled>カートに入れる</button>
+	                        </tr>
+
+
+	                  <div class="text-danger">ログインして下さい</div>
+	                <% end %>
+	              </div>
+	            <% end %>
+
+	          </div>
+          </div>

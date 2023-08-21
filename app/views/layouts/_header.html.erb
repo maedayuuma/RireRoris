@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark p-4" style="background-color: #000000;">
+  <nav class="navbar navbar-expand-lg navbar-dark p-4" style="background-color: #ffffff;">
     <div class="container-md">
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,57 +8,54 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
+          <%= link_to "RireRoris",root_path ,class:"navbar-brand text-dark" %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
         <% if customer_signed_in? %>
 
-          <li class='mr-5 mt-3' style="color: #fff;">
-          <h2><strong class="text-light text-left">Rire Roris</strong></h2>
-          </li>
-
-
-           <li class="mr-3">
-            <%=  link_to items_path,class: 'nav-link text-light' do %> 商品一覧
-            <% end %>
-          </li>
-
-           <li class="mr-3">
-            <%=  link_to cart_items_path ,class: 'nav-link text-light' do %>
-            <h4 class="fa-solid fa-cart-shopping text-light" aria-hidden="true"></h4>
-            <% end %>
-          </li>
-
-           <li class="mr-3">
-            <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %> ログアウト
+          <li class="mr-3">
+            <%= link_to bookmarks_path,class: 'nav-link text-dark' do %>
+            <h5 class="fa-regular fa-heart text-danger" aria-hidden="true"></h5>
             <% end %>
           </li>
 
           <li class="mr-3">
-            <%= link_to  customers_mypage_path,class: 'nav-link text-light' do %>
-            <h3 class="fa-regular fa-circle-user text-light" aria-hidden="true"></h3>
+            <%= link_to  customers_mypage_path,class: 'nav-link text-dark' do %>
+            <h5 class="fa-regular fa-user text-dark" aria-hidden="true"></h5>
+            <% end %>
+          </li>
+
+           <li class="mr-3">
+            <%=  link_to cart_items_path ,class: 'nav-link text-dark' do %>
+            <h5 class="fa-solid fa-cart-shopping text-dark" aria-hidden="true"></h5>
             <% end %>
           </li>
 
         <% elsif admin_signed_in? %>
 
           <li>
-            <%= link_to admin_items_path,class: 'nav-link text-light' do %>
-            <i class="fa-solid fa-rectangle-list text-light" aria-hidden="true"></i>
+            <%= link_to admin_items_path,class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-rectangle-list text-dark" aria-hidden="true"></i>
             商品一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light rounded-circle pt-2 pb-2 pr-3 pl-3 btn-sm ml-1 ">
-            <%=  link_to admin_customers_path ,class: 'nav-link text-light' do %> 会員一覧
+          <li class="btn btn-outline-dark rounded-circle pt-2 pb-2 pr-3 pl-3 btn-sm ml-1 ">
+            <%=  link_to admin_customers_path ,class: 'nav-link text-dark' do %> 会員一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light rounded-circle p-2 btn-sm ml-1 ">
-            <%=  link_to admin_path ,class: 'nav-link text-light' do %> 注文履歴一覧
+          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1 ">
+            <%=  link_to admin_path ,class: 'nav-link text-dark' do %> 注文履歴一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light rounded-circle p-2 btn-sm ml-1 ">
-            <%=  link_to admin_genres_path ,class: 'nav-link text-light' do %> ジャンル一覧
+          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1 ">
+            <%=  link_to admin_genres_path ,class: 'nav-link text-dark' do %> ジャンル一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light rounded-circle p-2 btn-sm ml-1 ">
-            <%=  link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %> ログアウト
+          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1 ">
+            <%=  link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %> ログアウト
             <% end %>
           </li>
 
@@ -70,25 +67,26 @@
             商品一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-light rounded-circle p-2 btn-sm ml-1">
-            <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
-            <i class="fa-solid fa-user-plus text-light" aria-hidden="true"></i>
+          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1">
+            <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-user-plus text-dark" aria-hidden="true"></i>
             新規登録
             <% end %>
           </li>
-           <li class="btn btn-outline-light rounded-circle p-2 btn-sm ml-1">
-              <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-user text-light" aria-hidden="true"></i>
+           <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1">
+              <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
+              <i class="fa-solid fa-user text-dark" aria-hidden="true"></i>
               ログイン
               <% end %>
           </li>
         <% end %>
         </ul>
       </div>
-      <div class="col-xs-3 ml-4">
-           <input type="text" class="form-control" placeholder="キーワードを入力">
+      <%#div class="col-xs-3 ml-4"#%>
+           <%#input type="text" class="form-control" placeholder="キーワードを入力">
            <button class="btn btn-sm text-light" style="background-color: #b38c59;" type="button" id="button-addon2"><i class="fas fa-search"></i> 検索</button>
-      </div>
+      <%#/div%>
+
     </div>
   </nav>
 </header>

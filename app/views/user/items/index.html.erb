@@ -1,16 +1,25 @@
 <%= render 'genre_search', genres: @genres %>
    <div class="item-list row">
      <div class="col-md-9 my-3">
-      <h3 class="font-weight-bold mt-3 mb-2">商品一覧</h3>
+      <h4 class="font-weight-bold mt-3 mb-5">商品一覧</h4>
 
         <table class="table">
 
-          <% @items.each do |item| %>
+          <% @item.each do |item| %>
 
               <%= link_to item_path(item.id) do %>
 
 		          <%= image_tag item.get_image, size: '300x250' %>
 		        <% end %>
+
+		        <% if item.bookmarked_by?(current_customer) %>
+            <div>
+              <h3 class="text-light"><%= link_to "♥", item_bookmark_path(item_id: item), method: :delete %></h3>
+                <% else %>
+                  <h3 class="text-light"><%= link_to "♡", item_bookmark_path(item_id: item), method: :post %></h3>
+                    <% end %>
+                      </div>
+
 		      <div class="text-left mt-3"><%= item.name %></div>
 		    <div class="text-left">¥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %></div>
 		  </div>
@@ -22,6 +31,6 @@
  </div>
 
  <div class="row">
-   <div class="px-5 px-sm-0 mt-4 mx-auto"><%= paginate @items %></div>
+   <div class="px-5 px-sm-0 mt-4 mx-auto"><%= paginate @item %></div>
    </div>
  </div>
