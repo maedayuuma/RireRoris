@@ -1,9 +1,10 @@
 class User::ItemsController < ApplicationController
 
   def index
-    @item = Item.all.page(params[:page]).per(10)
+    #@item = Item.all.page(params[:page]).per(10)
     @genres = Genre.all
-    @bookmark = Bookmark.new
+    @item = @q.result(distinct: true).page(params[:page]).order("created_at desc")
+
   end
 
   def genre_search
@@ -14,7 +15,7 @@ class User::ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
-    @reviews = Review.all
+    @reviews = @item.reviews
     @review = Review.new
     @all_rating = '総合評価'
     @bookmark = Bookmark.new

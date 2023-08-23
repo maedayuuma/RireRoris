@@ -1,36 +1,31 @@
 <%= render 'genre_search', genres: @genres %>
-   <div class="item-list row">
-     <div class="col-md-9 my-3">
-      <h4 class="font-weight-bold mt-3 mb-5">商品一覧</h4>
+<h4 class="font-weight-bold mt-3 mb-5">商品一覧</h4>
+  <div class="item-list row">
+    <div class="col-9 my-3">
 
-        <table class="table">
+        <table class="table flex-wrap">
 
           <% @item.each do |item| %>
 
-              <%= link_to item_path(item.id) do %>
+            <%= link_to item_path(item.id) do %>
+              <div class="card" style="width: 300px;">
+		            <%= image_tag item.get_image, size: '300x250' %>
+		              <% end %>
 
-		          <%= image_tag item.get_image, size: '300x250' %>
-		        <% end %>
+		               <div class="card-body">
 
-		        <% if item.bookmarked_by?(current_customer) %>
-            <div>
-              <h3 class="text-light"><%= link_to "♥", item_bookmark_path(item_id: item), method: :delete %></h3>
-                <% else %>
-                  <h3 class="text-light"><%= link_to "♡", item_bookmark_path(item_id: item), method: :post %></h3>
-                    <% end %>
-                      </div>
+		                 <div class="text-left card-title "><%= item.name %></div>
+		                   <h5 class="text-left card-text"><strong>￥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %></strong></h5>
+		                     </div>
+		                   </div>
 
-		      <div class="text-left mt-3"><%= item.name %></div>
-		    <div class="text-left">¥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %></div>
-		  </div>
+	                   <% end %>
+	                 </table>
+ 	               </div>
+               </div>
+             </div>
 
-	    <% end %>
-	    </table>
-	   </div>
-   </div>
- </div>
-
- <div class="row">
-   <div class="px-5 px-sm-0 mt-4 mx-auto"><%= paginate @item %></div>
-   </div>
- </div>
+           <div class="row">
+         <div class="px-5 px-sm-0 mt-4 mx-auto"><%= paginate @item %></div>
+       </div>
+     </div>

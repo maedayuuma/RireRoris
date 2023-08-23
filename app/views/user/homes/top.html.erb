@@ -1,14 +1,13 @@
 <div class="card text-white text-center">
+  <%= image_tag 'IMG_7226.jpg', size: '400', class: "card-img" %>
   <div class="card-img-overlay">
-    <h1 class="display-3 font-weight-bold">RireRoris</h1>
     <div class="font-weight-bold"></div>
-  </div>
+    </div>
 </div>
-
 <div class='container mt-2'>
   <div class='row'>
     <div class-"col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2 class="font-weight-bold mb-2 text-danger">人気商品!!</h2>
+      <h3 class="font-weight-bold m-4 text-danger">人気商品!!</h3>
       <div class="row">
         <% @items.each do |item| %>
 	        <div class="col-md-3">
@@ -20,9 +19,10 @@
 		      </div>
 	      <% end %>
 	      <div class='col-md-12 mt-4'>
-	        <p class="text-right"><%= link_to "全ての商品を見る>", items_path %></p>
+	        <p class="text-center"><%= link_to "すべての商品を見る>", items_path %></p>
 	      </div>
       </div>
     </div>
   </div>
 </div>
+

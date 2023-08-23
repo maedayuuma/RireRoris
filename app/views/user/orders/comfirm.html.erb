@@ -35,12 +35,12 @@
             <% @order.shipping_fee = 800 %>
             <td class="border-dark"><%= @order.shipping_fee %></td>
         </tr>
-        
+
         <tr>
           <th class="table-secondary border-dark">商品合計</th>
           <td class="border-dark"><%= @total.round.to_i %></td>
         </tr>
-        
+
         <tr>
           <th class="table-secondary border-dark">請求金額</th>
             <% @order.total_payment = @order.shipping_fee + @total.round.to_i %>
@@ -62,7 +62,7 @@
             </table>
         </div>
     </div>
-    
+
   <div class="row justify-content-center">
         <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
           <%= f.hidden_field :shipping_fee %>

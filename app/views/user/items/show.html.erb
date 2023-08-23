@@ -1,11 +1,12 @@
 <%= render 'genre_search', genres: @genres %>
 
   <div class="row">
-    <div class="col-md-9 p-3 mt-4">
+    <div class="col-sm p-3 mt-4">
 
       <%= image_tag @item.get_image, size: '400x350' %>
 
        <%#レビュー機能%>
+
          <div class="mt-5">
           <h5><strong>評価</strong></h5>
             <% if @review.errors.present? %>
@@ -21,7 +22,8 @@
                           <div class="field mb-3" id="star">
                             </div>
 
-                              <%= f.text_area :impression, :class => "form-control" %><br>
+                               <%= f.text_area :comment, placeholder: "コメントをここに" %><br>
+
                                 <%= f.submit "レビュー評価", :class => "btn btn-primary" %>
                                   </div>
 
@@ -37,21 +39,25 @@
                       </script>
 
                     <%= render partial: "user/items/show_rate", locals: { item: @item, reviews: @reviews, all_rating: @all_rating } %>
+                    <% @item.reviews.each do |review| %>
+                    
+                    <%= review.comment %>
+                    <% end %>
                   </div>
                 </div>
 
-                <div class="col-md-6 offset-md-1 p-3 mt-4">
-                  <h4 class="font-weight-bold"><%= @item.name %></h4>
-                    <h4><%=safe_join(@item.explanation.split("\n"),tag(:br))%></h4>
+                <div class="col-sm p-3 mt-4">
+                  <h4 class="font-weight-bold mb-4"><%= @item.name %></h4>
+                    <h5><%=safe_join(@item.explanation.split("\n"),tag(:br))%></h5>
                       <div class="mt-4">
-                        <h4>¥<%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %>(税込)</h4>
+                        <h5>¥ <%= @item.without_tax_price.to_s(:delimited, delimiter: ',') %> (税込)</h5>
                           </div>
 
                             <%#お気に入り機能%>
 	                            <tr>
                                 <% if @item.bookmarked_by?(current_customer) %>
 
-                                  <h3><%= link_to "♥", item_bookmark_path(item_id: @item), method: :delete %></h3>
+                                  <h3 class="text-red"><%= link_to "♥", item_bookmark_path(item_id: @item), method: :delete %></h3>
                                     <% else %>
                                   <h3><%= link_to "♡", item_bookmark_path(item_id: @item), method: :post %></h3>
                                 <% end %>
@@ -61,12 +67,12 @@
                               <%= form_for @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
                                 <%= f.hidden_field :item_id, :value => @item.id %>
                                   <div class="mt-3">
-                                    数量            <%= f.select :quantity, *[1..10] %>
+                                    数量            <%= f.select :quantity, *[1..10] %><br>
 
                                     <tr>
                                   <% if customer_signed_in? %>
 
-	                              <%= f.submit "カートに入れる", class:'btn btn-success'%>
+	                              <h5 class="mt-3"><%= f.submit "カートに入れる", class:'btn btn-primary'%></h5>
 	                            <% else %>
 	                          <button type="button" class="btn btn-success btn-lg" disabled>カートに入れる</button>
 	                        </tr>

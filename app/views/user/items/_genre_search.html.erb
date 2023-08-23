@@ -1,34 +1,24 @@
 <div class="container text-left">
   <div class="row">
-    <div class="col-md-3 p-3 mt-4">
+    <div class="col-3 p-3 mt-4 mr-3">
       <table class="table table-hover table-inverse">
-      <h6 class="mb-4"><strong>♦ ネックレス＆ブレスレット ♦</strong></h6>
-        <ul>
-
-          <li class="mb-4">
-            <%= link_to items_path,class: 'text-dark' do %><  全商品一覧
-              <% end %>
-                </li>
+        <h6 class="mb-4 p-4"><strong>◆ Ǹecklace & Bracelet ◆</strong></h6>
+          <ul>
+            <li class="border-bottom-corol:dark  pb-2 mb-4">
+              <p><strong><%= link_to items_path,class: 'text-dark' do %>◆ ALL <strong></p>
+                <% end %>
+                  </li>
 
                   <% genres.each do |genre| %>
 
-                <li class="mb-4">
+                <li class="border-bottom text-left pb-2 mb-4">
 
               <%= link_to genre_path(genre),class: 'text-dark' do %>
-            < <%= genre.name %>
+            <p>◆ <%= genre.name %></p>
           <% end %>
         </li>
       <% end %>
 
-                <li class="mb-4">
-            <%= link_to bookmarks_path,class: 'text-dark' do %><  お気に入り一覧  ♥
-              <% end %>
-                </li>
-
-      <li class="mr-3">
-        <%= link_to destroy_customer_session_path, method: :delete,class: 'text-danger' do %>< ログアウト
-        <% end %>
-      </li>
     </ul>
   </table>
 </div>

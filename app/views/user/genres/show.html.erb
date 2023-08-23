@@ -4,29 +4,29 @@
       <div class="col-md-8">
         <h3 class="text-center mt-3 mb-3"></h3>
           <table class="table">
-            <tbody> 
-            
+            <tbody>
+
               <% @genre.items.each_slice(5) do |items_group| %>
-              
+
                 <tr>
                   <% items_group.each do |item| %>
-                  
+
                     <td class="item">
-                      
+
                       <%= link_to item_path(item) do %>
-                      
+
                         <%= image_tag item.get_image, size: '250x180' %><br>
-                        
+
                           <%= item.name %><br>
-                          
+
                             ￥<%= (item.without_tax_price * 1.1).round %> (税込み）
-                            
+
                           <% end %>
                         </td>
                       <% end %>
-                      
+
                     <% (5 - items_group.size).times do %>
-                    
+
                 <td></td>
                 <% end %>
                 </tr>

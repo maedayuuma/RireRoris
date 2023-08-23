@@ -3,7 +3,12 @@ class User::BookmarksController < ApplicationController
 
   def index
      @items = Item.all
-     @bookmarks = Bookmark.where(item_id: @items, customer_id: current_customer.id)
+     @bookmarks = Bookmark.where(customer_id: current_customer.id)
+  end
+
+  def genre_search
+    @genre = Genre.find(params[:id])
+    @items = @genre.items.order(created_at: :DESC)
   end
 
   def create

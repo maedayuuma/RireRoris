@@ -22,4 +22,12 @@ class Item < ApplicationRecord
   def get_image
     (image.attached?) ? image : 'no-image.jpg'
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "explanation", "genre_id", "id", "is_sale", "name", "updated_at", "without_tax_price"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["bookmarks", "cart_items", "genre", "image_attachment", "image_blob", "order_items", "reviews"]
+  end
 end
