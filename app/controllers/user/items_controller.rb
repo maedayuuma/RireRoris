@@ -3,7 +3,7 @@ class User::ItemsController < ApplicationController
   def index
     #@item = Item.all.page(params[:page]).per(10)
     @genres = Genre.all
-    @item = @q.result(distinct: true).page(params[:page]).order("created_at desc")
+    @item = @q.result(distinct: true).page(params[:page]).per(10).order("created_at desc")
 
   end
 

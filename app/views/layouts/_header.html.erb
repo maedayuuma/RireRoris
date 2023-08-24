@@ -11,6 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
 
+        <div class="mr-3"><%= render 'layouts/search', q: @q, url: items_path %></div>
 
         <% if customer_signed_in? %>
 
@@ -44,26 +45,25 @@
 
         <% elsif admin_signed_in? %>
 
-          <li>
-          <li class="btn btn-outline-dark rounded-circle pt-2 pb-2 pr-3 pl-3 btn-sm ml-1 ">
+          <li class="btn btn-outline-dark rounded-circle pt-2 pb-2 pr-3 pl-3 btn-sm mr-4 ">
             <%= link_to admin_items_path,class: 'nav-link text-dark' do %> 商品一覧
             <% end %>
           </li>
 
-          <li class="btn btn-outline-dark rounded-circle pt-2 pb-2 pr-3 pl-3 btn-sm ml-1 ">
+          <li class="btn btn-outline-dark rounded-circle pt-2 pb-2 pr-3 pl-3 btn-sm mr-4 ml-4 ">
             <%=  link_to admin_customers_path ,class: 'nav-link text-dark' do %> 会員一覧
             <% end %>
           </li>
 
-          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1 ">
+          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm mr-4 ml-4 ">
             <%=  link_to admin_path ,class: 'nav-link text-dark' do %> 注文履歴一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1 ">
+          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm mr-4 ml-4 ">
             <%=  link_to admin_genres_path ,class: 'nav-link text-dark' do %> ジャンル一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1 ">
+          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm mr-4 ml-4 ">
             <%=  link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %> ログアウト
             <% end %>
           </li>
@@ -91,8 +91,6 @@
         <% end %>
         </ul>
       </div>
-
-     <%= render 'layouts/search', q: @q, url: items_path %>
     </div>
   </nav>
 </header>
