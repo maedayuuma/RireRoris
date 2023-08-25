@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4 class="table-secondary d-inline-flex pl-4 pr-4 mt-5 mb-4 ml-2"><%= @customer.full_name %>さんの会員詳細</h4>
+      <h5 class="text-center pl-4 pr-4 mt-5 mb-4 ml-2">◆ <%= @customer.full_name %>さんの会員詳細 ◆</h5>
         <%= form_with model: @customer, url:admin_customer_path(@customer), local:true do |f| %>
           <table class="table table-borderless">
 
@@ -12,15 +12,13 @@
 
             <tr>
               <th>氏名</th>
-              <th><%= f.text_field :last_name %></th>
-              <th><%= f.text_field :first_name %></th>
+              <th><%= f.text_field :full_name %></th>
             </tr>
 
 
             <tr>
               <th>フリガナ</th>
-              <th><%= f.text_field :last_name_kana %></th>
-              <th><%= f.text_field :first_name_kana %></th>
+              <th><%= f.text_field :full_name_kana %></th>
             </tr>
 
             <tr>
@@ -30,7 +28,7 @@
 
             <tr>
               <th>住所</th>
-              <th><%= f.text_area :address, size: 40 %></th>
+              <th><%= f.text_area :address, size: 50 %></th>
             </tr>
 
             <tr>
@@ -40,7 +38,7 @@
 
             <tr>
               <th>メールアドレス</th>
-              <th><%= f.text_field :email %></th>
+              <th><%= f.text_field :email, size: 40 %></th>
             </tr>
 
             <tr>
@@ -48,15 +46,15 @@
               <th>
               <%= f.radio_button :is_withdrawal, :false %>
               <%= f.label :is_withdrawal_false, "有効" %>
+
               <%= f.radio_button :is_withdrawal, :true %>
               <%= f.label :is_withdrawal_true, "退会" %>
               </th>
             </tr>
 
             <tr>
-              <th></th>
-              <th><%= f.submit "変更を保存", class: "btn btn-success" %></th>
-             </tr>
+              <th><%= f.submit "変更を保存", class: "btn btn-primary" %></th>
+            </tr>
 
         <% end %>
       </div>

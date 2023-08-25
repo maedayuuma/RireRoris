@@ -1,11 +1,12 @@
 <div class="container">
- <h5 class="text-center pl-5 pr-5 mt-4">◆ ジャンル一覧・追加 ◆</h5>
+ <h5 class="text-center pl-5 pr-5 mt-5">◆ ジャンル一覧・追加 ◆</h5>
   <div class="row">
    <div class="col mt-5">
 
     <%= form_with model: @genre, url:admin_genres_path, local:true do |f| %>
 
-     <table class="table table-borderless">
+     <table class="table">
+
       <tr>
        <th>ジャンル名</th>
         <th><%= f.text_field :name, size:"35" %></th>
@@ -15,20 +16,16 @@
     </table>
 
     <table class="table table-bordered">
-     <thead class="thead-light">
-      <tr>
-        <th>ジャンル</th>
-       <th></th>
+      <tr class="table-warning">
+       <th class="border-dark">ジャンル</th>
+       <th class="border-dark"></th>
       </tr>
-     </thead>
 
-     <tbody>
       <% @genres.each do |genre| %>
         <tr>
-         <th><%= genre.name %></th>
-         <th><%= link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-primary" %></th>
+         <td class="border-dark"><%= genre.name %></td>
+         <td class="border-dark"><%= link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-primary" %></td>
         </tr>
-       </tbody>
       <% end %>
      </table>
     </div>

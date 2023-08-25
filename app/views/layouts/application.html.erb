@@ -12,10 +12,14 @@
   </head>
 
   <body style="background-color: #efe0ff;">
+
+  <div>
     <%= render 'layouts/header' %>
     <main>
       <%= yield %>
-    </main>
+      </main>
     <%= render 'layouts/footer' %>
+  </div>
+
   </body>
 </html>

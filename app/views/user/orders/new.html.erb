@@ -1,8 +1,8 @@
 <div class="container">
-  <h4 class="table-secondary d-inline-flex pl-5 pr-5 mt-4 mb-4">注文情報入力</h4>
+ <h5 class="text-center pl-5 pr-5 mt-5 mb-5">◆ 注文情報入力 ◆</h5>
   <div class="row mt-2">
-  <div class="row">
-    <div class="col">
+    <div class="col-3"></div>
+     <div class="col-7">
 
       <%= form_with model: @order, url: orders_comfirm_path, local: true do |f| %>
       <h6 class="text-left font-weight-bold">支払い方法</h6>
@@ -15,7 +15,7 @@
       <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
       <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
       </div>
-      <h6 class="font-weight-bold">お届け先</h6>
+      <h6 class="font-weight-bold mt-3">お届け先</h6>
 
       <%= f.radio_button :address_number, 0, checked: true %>
       <%= f.label :address_number_0, "ご自身の住所" %>
@@ -37,17 +37,19 @@
       <%= f.label :address_number_2, "新しいお届け先" %>
       <br>
      <table>
-       <tr>
-      <td class="pr-3 pb-2"><%= f.label :post_code, "郵便番号" %></td>
-      <td><%= f.text_field :post_code %></td>
-       </tr>
-       <tr>
-      <td class="pr-3 pb-2"><%= f.label :address, "住所" %></td>
-      <td><%= f.text_field :address, size: 60 %></td>
-       </tr>
-       <tr>
-      <td><%= f.label :name, "氏名" %></td>
-      <td><%= f.text_field :name %></td>
+      <tr>
+        <td class="pr-3 pb-2"><%= f.label :post_code, "郵便番号" %></td>
+        <td><%= f.text_field :post_code %></td>
+      </tr>
+
+      <tr>
+        <td class="pr-3 pb-2"><%= f.label :address, "住所" %></td>
+        <td><%= f.text_field :address, size: 40 %></td>
+      </tr>
+
+      <tr>
+        <td><%= f.label :name, "氏名" %></td>
+        <td><%= f.text_field :name %></td>
       </tr>
      </table>
       <div class="row justify-content-center py-5">
@@ -55,4 +57,6 @@
       </div>
 
       <% end %>
+      </div>
+      </div>
       </div>

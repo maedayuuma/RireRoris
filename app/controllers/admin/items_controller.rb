@@ -24,6 +24,7 @@ class Admin::ItemsController < ApplicationController
   @item = Item.find(params[:id])
   @genres = Genre.all
   @review = Review.all
+  @all_rating = '総合評価'
  end
 
  def edit

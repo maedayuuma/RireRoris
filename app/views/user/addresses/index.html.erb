@@ -1,7 +1,7 @@
 <div class='container'>
 <div class='row mt-4'>
 <div class="col-sm-4 px-sm-0 mr-5">
-<h4 class="text-center mt-2 mb-3">配送先一覧</h4>
+<h4 class="text-center mt-2 mb-4">◆ 配送先一覧 ◆</h4>
 
 <%= form_with model: @address, url:"/addresses", local:true do |f| %>
 
@@ -43,18 +43,18 @@
   <div class="col mt-5">
   <table class="table table-bordered">
       <tr class="table-warning">
-      <td><strong>郵便番号</strong></td>
-      <td><strong>住所</strong></td>
-      <td><strong>氏名</strong></td>
-      <td></td>
+      <td class="border border-dark"><strong>郵便番号</strong></td>
+      <td class="border border-dark"><strong>住所</strong></td>
+      <td class="border border-dark"><strong>氏名</strong></td>
+      <td class="border border-dark"></td>
       </tr>
     <% @addresses.each do |addresses| %>
     <tr>
-      <td><%= addresses.post_code %></td>
-      <td><%= addresses.address %></td>
-      <td><%= addresses.name %></td>
+      <td class="border border-dark"><%= addresses.post_code %></td>
+      <td class="border border-dark"><%= addresses.address %></td>
+      <td class="border border-dark"><%= addresses.name %></td>
 
-       <td class="text-center"><%= link_to "編集", edit_address_path(addresses.id), class: "btn btn-primary mr-4" %>
+       <td class="text-center border border-dark"><%= link_to "編集", edit_address_path(addresses.id), class: "btn btn-primary mr-4" %>
        <%= link_to "削除", address_path(addresses.id), method: :delete, class:'btn btn-danger' %></td>
     </tr>
    <% end %>

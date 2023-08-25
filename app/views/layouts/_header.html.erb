@@ -45,44 +45,44 @@
 
         <% elsif admin_signed_in? %>
 
-          <li class="btn btn-outline-dark rounded-circle pt-2 pb-2 pr-3 pl-3 btn-sm mr-4 ">
+          <li class="btn btn-outline-dark rounded-circle pt-3 pr-3 pl-3 btn-sm mr-2 ">
             <%= link_to admin_items_path,class: 'nav-link text-dark' do %> 商品一覧
             <% end %>
           </li>
 
-          <li class="btn btn-outline-dark rounded-circle pt-2 pb-2 pr-3 pl-3 btn-sm mr-4 ml-4 ">
+          <li class="btn btn-outline-dark rounded-circle pt-3 pr-3 pl-3 btn-sm mr-2 ml-4 ">
             <%=  link_to admin_customers_path ,class: 'nav-link text-dark' do %> 会員一覧
             <% end %>
           </li>
 
-          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm mr-4 ml-4 ">
+          <li class="btn btn-outline-dark rounded-circle pt-3 btn-sm mr-2 ml-4 ">
             <%=  link_to admin_path ,class: 'nav-link text-dark' do %> 注文履歴一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm mr-4 ml-4 ">
+          <li class="btn btn-outline-dark rounded-circle pt-3 btn-sm mr-2 ml-4 ">
             <%=  link_to admin_genres_path ,class: 'nav-link text-dark' do %> ジャンル一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-dark rounded-circle p-2 btn-sm mr-4 ml-4 ">
+          <li class="btn btn-outline-dark rounded-circle pt-3 btn-sm mr-2 ml-4 ">
             <%=  link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %> ログアウト
             <% end %>
           </li>
 
         <% else %>
 
-          <li class="btn btn-outline-light rounded-circle btn-sm ml-1 ">
-            <%= link_to items_path,class: 'nav-link text-light' do %>
-            <i class="fa-solid fa-rectangle-list text-light" aria-hidden="true"></i>
+          <li class="btn btn-outline-dark rounded-circle btn-sm pt-3 mr-3">
+            <%= link_to items_path,class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-rectangle-list text-dark" aria-hidden="true"></i>
             商品一覧
             <% end %>
           </li>
-          <li class="btn btn-outline-dark rounded-circle  ml-1">
+          <li class="btn btn-outline-dark rounded-circle btn-sm pt-3 mr-3">
             <%= link_to new_customer_registration_path,class: 'nav-link text-dark' do %>
             <i class="fa-solid fa-user-plus text-dark" aria-hidden="true"></i>
             新規登録
             <% end %>
           </li>
-           <li class="btn btn-outline-dark rounded-circle p-2 btn-sm ml-1">
+           <li class="btn btn-outline-dark rounded-circle btn-sm pt-3 mr-3">
               <%= link_to new_customer_session_path, class: 'nav-link text-dark' do %>
               <i class="fa-solid fa-user text-dark" aria-hidden="true"></i>
               ログイン

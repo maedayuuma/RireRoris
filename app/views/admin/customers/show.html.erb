@@ -1,55 +1,56 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-    <h4 class="table-secondary d-inline-flex pl-4 pr-4 mt-5 mb-4 ml-2"><%= @customer.full_name %>さんの会員詳細</h4>
-      <table class="table table-borderless">
+    <div class="col-2"></div>
+    <div class="col-8">
+     <h4 class="text-center pl-5 pr-4 mt-5 mb-5 ml-2">◆ <%= @customer.full_name %>さんの会員詳細 ◆</h4>
+      <table class="table table-bordered border-dark">
+
              <tr>
-              <th class="text-left">会員ID</th>
-              <th><%= @customer.id %></th>
+              <th class="border border-dark table-warning text-left">会員ID</th>
+              <th class="border border-dark"><%= @customer.id %></th>
              </tr>
 
             <tr>
-              <th class="text-left">氏名</th>
-              <th><%= @customer.last_name %><%= @customer.first_name %></th>
+              <th class="border border-dark table-warning text-left">氏名</th>
+              <th class="border border-dark"><%= @customer.first_name %><%= @customer.last_name %></th>
             </tr>
 
             <tr>
-              <th class="text-left">フリガナ</th>
-              <th><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
+              <th class="border border-dark table-warning text-left">フリガナ</th>
+              <th class="border border-dark"><%= @customer.first_name_kana %><%= @customer.last_name_kana %></th>
             </tr>
 
             <tr>
-              <th class="text-left">郵便番号</th>
-              <th><%= @customer.post_code %></th>
+              <th class="border border-dark table-warning text-left">郵便番号</th>
+              <th class="border border-dark"><%= @customer.post_code %></th>
             </tr>
 
             <tr>
-              <th class="text-left">住所</th>
-              <th><%= @customer.address %></th>
+              <th class="border border-dark table-warning text-left">住所</th>
+              <th class="border border-dark"><%= @customer.address %></th>
             </tr>
 
             <tr>
-              <th class="text-left">電話番号</th>
-              <th><%= @customer.phone_number %></th>
+              <th class="border border-dark table-warning text-left">電話番号</th>
+              <th class="border border-dark"><%= @customer.phone_number %></th>
             </tr>
 
             <tr>
-              <th class="text-left">メールアドレス</th>
-              <th><%= @customer.email %></th>
+              <th class="border border-dark table-warning text-left">メールアドレス</th>
+              <th class="border border-dark"><%= @customer.email %></th>
             </tr>
 
             <tr>
-              <th class="text-left">会員ステータス</th>
-              <th class="text-success"><%= @customer.customer_status %></th>
+              <th class="border border-dark table-warning text-left">会員ステータス</th>
+              <th class="border border-dark text-success"><%= @customer.customer_status %></th>
             </tr>
 
             <tr>
-              <th></th>
               <th><%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success" %></th>
               <th class="text-left"><%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %></th>
             </tr>
 
-      </table>
+            </table>
+          </div>
       </div>
-    </div>
   </div>
