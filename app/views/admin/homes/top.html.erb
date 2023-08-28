@@ -14,10 +14,10 @@
 
        <% @orders.each do |order| %>
        <tr>
-         <td class="border-dark"><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %></td>
-           <td class="border-dark"><%= order.customer.full_name %></td>
-           <td class="border-dark"><%= order.order_items.sum(:quantity) %></td>
-         <td class="border-dark"><%= order.status_i18n %></td>
+         <td class="border-dark" style="background-color: #f9ffff;"><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %></td>
+           <td class="border-dark" style="background-color: #f9ffff;"><%= order.customer.full_name %></td>
+           <td class="border-dark" style="background-color: #f9ffff;"><%= order.order_items.sum(:quantity) %></td>
+         <td class="border-dark" style="background-color: #f9ffff;"><%= order.status_i18n %></td>
         </tr>
         <% end %>
        </table>

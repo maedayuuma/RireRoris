@@ -5,27 +5,21 @@
     </div>
 <!--<div class="row">-->
     <div class="col-sm-9 my-3">
-      <h5 class="font-weight-bold text-center mt-3 mb-5">◆ 商品一覧 ◆</h5>
+      <h3 class="font-weight-bold text-left mt-4 mb-5">◆ 商品一覧 ◆</h3>
 
       <div class="row">
         <% @item.each do |item| %>
         <%= link_to item_path(item.id) do %>
-          <div class="col-md-6 col-lg-4">
-            <div class="card" style="max-width:300px;">
-  		        <div class="card-header p-3" style="background-color: #f9f9ff">
-  		          <div style="height:180px;">
-  		            <% if item.image.attached? %>
-  		              <%= image_tag item.image.variant(gravity: :center, resize:"480x480", crop:"300x300+0+0").processed, class: "img-fluid" %>
-  		            <% else %>
-  		              no-image
-  		            <% end %>
-  		            <% end %>
-  		          </div>
-  		          <div class="text-center card-title mt-4" style="height:50px;"><%= item.name %></div>
-  		          <h5 class="text-left" style="color:#ea5550;"><strong>￥<%= item.without_tax_price.to_s(:delimited, delimiter: ',') %></strong></h5>
-  		        </div>
-  		      </div>
+          <div class="col-md-6 col-lg-2">
+
+            <div class="card mb-4" style="width: 248px;">
+            <div class="card-header p-4" style="background-color: #eaeaff"><%= image_tag item.get_image, size: '200x200' %>
+            <h5 class="text-left mt-2" style="color:#ea5550;">￥<%= (item.without_tax_price * 1.1).round %> </h5>
+            </div>
+            </div>
+
 		      </div>
+        <% end %>
         <% end %>
       </div>
       <div class="px-5 px-sm-0 mt-4 mx-auto"><%= paginate @item %></div>

@@ -3,15 +3,14 @@
       <h6 class="text-center">◆RIRE.RORIS◆</h6>
 
   <nav class="navbar navbar-expand-lg navbar-dark p-4" style="background-color: #efe0ff;">
-    <div class="container-md">
+    <li class="ml-5 row"><%= render 'layouts/search', q: @q, url: items_path %></li>
+    <div class="container">
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-
-        <div class="mr-3"><%= render 'layouts/search', q: @q, url: items_path %></div>
 
         <% if customer_signed_in? %>
 
@@ -20,32 +19,32 @@
             <% end %>
           </li>
 
-          <li class="mr-4">
+          <li class="mr-3">
             <%= link_to bookmarks_path,class: 'nav-link text-dark' do %>
             <h4 class="fa-solid fa-heart text-danger" aria-hidden="true"></h4>
             <% end %>
           </li>
 
-          <li class="mr-4">
+          <li class="mr-3">
             <%= link_to  customers_mypage_path,class: 'nav-link text-dark' do %>
             <h4 class="fa-solid fa-user text-dark" aria-hidden="true"></h4>
             <% end %>
           </li>
 
-           <li class="mr-4">
+           <li class="mr-3">
             <%=  link_to cart_items_path ,class: 'nav-link text-dark' do %>
             <h4 class="fa-solid fa-cart-shopping text-dark" aria-hidden="true"></h4>
             <% end %>
           </li>
 
-          <li class="mr-4">
-            <h5><%=  link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>ログアウト</h5>
+          <li class="ml-1">
+            <h5><strong><%=  link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-dark' do %>ログアウト</h5></strong>
             <% end %>
           </li>
 
         <% elsif admin_signed_in? %>
 
-          <li class="btn btn-outline-dark rounded-circle pt-3 pr-3 pl-3 btn-sm mr-2 ">
+          <li class="btn btn-outline-dark rounded-circle pt-3 pb-3 pr-3 pl-3 btn-sm mr-2 ">
             <%= link_to admin_items_path,class: 'nav-link text-dark' do %> 商品一覧
             <% end %>
           </li>

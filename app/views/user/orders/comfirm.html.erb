@@ -1,9 +1,8 @@
 <div class="container">
-<h4 class="text-center pl-5 pr-5 mt-4 mb-4 ml-5">◆ 注文情報確認 ◆</h4>
-<div class="row mb-3"></div>
+<div class="row mb-3 mt-5"></div>
 
 
-<div class="row">
+<div class="row mt-5">
 <div class='col-7 offset-1'>
   <table class='table table-bordered'>
     <tr>
@@ -15,12 +14,12 @@
     <% total = 0 %>
     <% @cart_items.each do |cart_item| %>
       <tr>
-        <td class="border-dark"><%= image_tag cart_item.item.get_image, size: "70x50" %><%= cart_item.item.name %></td>
+        <td class="border-dark" style="background-color: #f9ffff;"><%= image_tag cart_item.item.get_image, size: "70x50" %><%= cart_item.item.name %></td>
         <%= cart_item.item.name %>
 　　　　 </td>
-            <td class="border-dark"><%= cart_item.item.add_tax_sales_price %></td>
-              <td class="border-dark"><%= cart_item.quantity %></td>
-              <td class="border-dark"> <%= cart_item.sum_of_price %></td>
+            <td class="border-dark" style="background-color: #f9ffff;"><%= cart_item.item.add_tax_sales_price %></td>
+              <td class="border-dark" style="background-color: #f9ffff;"><%= cart_item.quantity %></td>
+              <td class="border-dark" style="background-color: #f9ffff;"> <%= cart_item.sum_of_price %></td>
          </tr>
         <% total += (cart_item.sum_of_price*cart_item.quantity) %>
      <% end %>
@@ -31,18 +30,18 @@
         <tr>
           <th class="border-dark table-warning text-left ml-5">送料</th>
             <% @order.shipping_fee = 800 %>
-            <td class="border-dark"><%= @order.shipping_fee %></td>
+            <td class="border-dark" style="background-color: #f9ffff;"><%= @order.shipping_fee %></td>
         </tr>
 
         <tr>
           <th class="border-dark table-warning text-left ml-5">商品合計</th>
-          <td class="border-dark"><%= @total.round.to_i %></td>
+          <td class="border-dark" style="background-color: #f9ffff;"><%= @total.round.to_i %></td>
         </tr>
 
         <tr>
           <th class="border-dark table-warning text-left ml-5">請求金額</th>
             <% @order.total_payment = @order.shipping_fee + @total.round.to_i %>
-          <td class="border-dark"><%= @order.total_payment %></td>
+          <td class="border-dark" style="background-color: #f9ffff;"><%= @order.total_payment %></td>
         </tr>
       </table>
     </div>
@@ -61,7 +60,7 @@
         </div>
     </div>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mb-5">
         <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
           <%= f.hidden_field :shipping_fee %>
             <%= f.hidden_field :total_payment %>

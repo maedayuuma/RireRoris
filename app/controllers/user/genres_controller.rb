@@ -11,7 +11,7 @@ class User::GenresController < ApplicationController
   end
 
   def show
-    @genres = Genre.all
+    @genres = Genre.all.page(params[:page]).per(8)
     @genre = Genre.find(params[:id])
   end
 end

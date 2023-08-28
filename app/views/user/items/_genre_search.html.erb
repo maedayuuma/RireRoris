@@ -1,18 +1,20 @@
- <table class="table table-hover table-inverse">
-    <h6 class="mb-4 p-4">◆ Ǹecklace & Bracelet ◆</h6>
+ <table>
     <ul>
-      <li class="border-bottom-corol:dark  pb-2 mb-4">
+      <li class="pb-2 mb-4 mt-5">
         <p>
+          <h6>
           <%= link_to items_path,class: 'text-dark' do %>
-          ◆ ALL </p>
+          ◆ Ǹecklace & Bracelet ◆</6>
           <% end %>
         </p>
       </li>
       <% genres.each do |genre| %>
-        <li class="border-bottom text-left pb-2 mb-4">
+        <li class="text-left pb-2 mb-4">
+          <strong>
           <%= link_to genre_path(genre),class: 'text-dark' do %>
             <p>◆ <%= genre.name %></p>
           <% end %>
+          </strong>
         </li>
       <% end %>
     </ul>

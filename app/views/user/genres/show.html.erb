@@ -1,41 +1,28 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2"></div>
-      <div class="col-md-8">
-        <h3 class="text-center mt-3 mb-3"></h3>
-          <table class="table">
-            <tbody>
+    <div class="col-sm-12 col-md-8 col-lg-12 px-5 px-sm-0 mx-auto">
+     <h4 class="font-weight-bold text-center mr-5 mt-5 mb-5">◆ ジャンル一覧 ◆</h4>
 
-              <% @genre.items.each_slice(5) do |items_group| %>
+        <div class="mb-5 ml-5 row">
+          <% @genre.items.each_slice(5) do |items_group| %>
+          <% items_group.each do |item| %>
 
-                <tr>
-                  <% items_group.each do |item| %>
+            <div class="col-md-6 col-lg-4">
+              <%= link_to item_path(item) do %>
 
-                    <td class="item">
+              <div class="card mr-3 mb-4" style="width: 248px;">
+              <div class="card-header p-4" style="background-color: #eaeaff"><%= image_tag item.get_image, size: '200x200' %>
 
-                      <%= link_to item_path(item) do %>
+              <h5 class="text-left mt-3" style="color:#ea5550;">￥<%= (item.without_tax_price * 1.1).round %> </h5>
 
-                        <%= image_tag item.get_image, size: '250x180' %><br>
-
-                          <%= item.name %><br>
-
-                            ￥<%= (item.without_tax_price * 1.1).round %> (税込み）
-
-                          <% end %>
-                        </td>
-                      <% end %>
-
-                    <% (5 - items_group.size).times do %>
-
-                <td></td>
-                <% end %>
-                </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
+              </div>
+              </div>
+            <% end %>
+             </div>
+          <% end %>
+        <% end %>
         </div>
-      </div>
-    <div class="col-md-2"></div>
+      <div class="px-5 px-sm-0 mt-4 mx-auto"><%= paginate @genres %></div>
   </div>
+</div>
 </div>

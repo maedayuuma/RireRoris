@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
  def index
-  @items = Item.all.page(params[:page]).per(10)
+  @items = Item.all
  end
 
  def new
@@ -23,7 +23,7 @@ class Admin::ItemsController < ApplicationController
  def show
   @item = Item.find(params[:id])
   @genres = Genre.all
-  @review = Review.all
+  @reviews = @item.reviews
   @all_rating = '総合評価'
  end
 

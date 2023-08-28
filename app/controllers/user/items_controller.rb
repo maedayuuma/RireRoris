@@ -3,7 +3,7 @@ class User::ItemsController < ApplicationController
   def index
     #@item = Item.all.page(params[:page]).per(10)
     @genres = Genre.all
-    @item = @q.result(distinct: true).page(params[:page]).per(10).order("created_at desc")
+    @item = @q.result(distinct: true).page(params[:page]).per(9).order("created_at desc")
 
   end
 
@@ -20,6 +20,7 @@ class User::ItemsController < ApplicationController
     @all_rating = '総合評価'
     @bookmark = Bookmark.new
     @genres = Genre.all
+
   end
 
 

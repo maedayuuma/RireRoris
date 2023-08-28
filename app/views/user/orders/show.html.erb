@@ -9,22 +9,22 @@
     <tbody>
       <tr>
         <td class="border border-dark table-warning text-left"><strong>注文日</strong></td>
-        <td class="border border-dark"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        <td class="border border-dark" style="background-color: #f9ffff;"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
 
       <tr>
         <td class="border border-dark table-warning text-left"><strong>配送先</strong></td>
-        <td class="border border-dark"><%= @order.customer.address %></td>
+        <td class="border border-dark" style="background-color: #f9ffff;"><%= @order.customer.address %></td>
       </tr>
 
       <tr>
         <td class="border border-dark table-warning text-left"><strong>支払方法</strong></td>
-        <td class="border border-dark"><%= @order.payment_method_i18n %></td>
+        <td class="border border-dark" style="background-color: #f9ffff;"><%= @order.payment_method_i18n %></td>
       </tr>
 
       <tr>
         <td class="border border-dark table-warning text-left"><strong>ステータス</td>
-        <td class="border border-dark"><%= @order.status_i18n %></td>
+        <td class="border border-dark" style="background-color: #f9ffff;"><%= @order.status_i18n %></td>
       </tr>
     </tbody>
     </table>
@@ -42,10 +42,10 @@
 
         <% @order_items.each do |order| %>
         <tr>
-          <td class="border border-dark"><%= order.item.name %></td>
-            <td  class="border border-dark"><%= order.price %></td>
-            <td  class="border border-dark"><%= order.quantity %></td>
-          <td  class="border border-dark"><%= order.subtotal %></td>
+          <td class="border border-dark" style="background-color: #f9ffff;"><%= order.item.name %></td>
+            <td  class="border border-dark" style="background-color: #f9ffff;"><%= order.price %></td>
+            <td  class="border border-dark" style="background-color: #f9ffff;"><%= order.quantity %></td>
+          <td  class="border border-dark" style="background-color: #f9ffff;"><%= order.subtotal %></td>
         </tr>
      <% end %>
     </table>
@@ -59,17 +59,17 @@
 
         <tr>
           <td class="border border-dark table-warning text-left"><strong>商品合計</strong></td>
-          <td class="border border-dark"><%= @order.total_price %><strong></td>
+          <td class="border border-dark" style="background-color: #f9ffff;"><%= @order.total_price %><strong></td>
         </tr>
 
         <tr>
           <td class="border border-dark table-warning text-left"><strong>配送料</strong></td>
-          <td class="border border-dark"><%= @shipping_fee %></td>
+          <td class="border border-dark" style="background-color: #f9ffff;"><%= @shipping_fee %></td>
         </tr>
 
         <tr>
           <td class="border border-dark table-warning text-left"><strong>合計金額</strong></td>
-          <td class="border border-dark"><%= @order.total_price + @shipping_fee %></td>
+          <td class="border border-dark" style="background-color: #f9ffff;"><%= @order.total_price + @shipping_fee %></td>
         </tr>
      </div>
     </div>

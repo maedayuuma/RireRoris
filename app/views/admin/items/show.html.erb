@@ -1,40 +1,47 @@
 <div class="container">
- <h4 class="text-center pl-5 pr-5 mt-5 mb-4">◆ 商品詳細 ◆</h4>
-  <div class="row">
+  <div class="row mt-5">
+
    <div class="col-4 mt-5">
     <%=image_tag @item.get_image, size: "300x300" %>
   </div>
 
-  <div class="col-8 mt-5">
+  <div class="col-8 mt-3">
    <table class="table table-bordered">
+
+    <h4 class="text-center pl-5 pr-5 mt-2 mb-4">◆ 商品詳細 ◆</h4>
     <tr>
      <th class="border-dark table-warning text-left ml-5">商品名</th>
-     <td class="border border-dark"><%= @item.name %></td>
+     <td class="border border-dark" style="background-color: #f9ffff;"><%= @item.name %></td>
     </tr>
 
     <tr>
      <th class="border-dark table-warning text-left ml-5">商品説明</th>
-     <td class="border border-dark"><%= @item.explanation %></td>
+     <td class="border border-dark" style="background-color: #f9ffff;"><%= @item.explanation %></td>
     </tr>
 
     <tr>
      <th class="border-dark table-warning text-left">ジャンル</th>
-     <td class="border border-dark"><%= @item.genre.name %><td>
+     <td class="border border-dark" style="background-color: #f9ffff;"><%= @item.genre.name %><td>
     </tr>
 
     <tr>
      <th class="border-dark table-warning text-left">税込価格</th>
-     <td class="border border-dark"><%= @item.without_tax_price %>(<%= @item.add_tax_sales_price.to_s(:dalimited) %>)円<td>
+     <td class="border border-dark" style="background-color: #f9ffff;"><%= @item.without_tax_price %>(<%= @item.add_tax_sales_price.to_s(:dalimited) %>)円<td>
     </tr>
 
     <tr>
      <th class="border-dark table-warning text-left">販売ステータス</th>
-     <th class="border border-dark text-success"><%= @item.is_sale ? "販売中" : "販売停止中" %></th>
+     <th class="border border-dark text-success" style="background-color: #f9ffff;"><%= @item.is_sale ? "販売中" : "販売停止中" %></th>
     </tr>
 
+
     <tr>
-      <th class="border-dark table-warning text-left">評価</th>
-      <td class="border border-dark"><%= @item.reviews %></td>
+      <th class="border-dark table-warning text-left">平均評価</th>
+      <td class="border border-dark" style="background-color: #f9ffff;">
+       <%#@reviews.each do |review| %>
+       <%= @reviews.average(:all_rating) %>
+       <%# end %>
+       </td>
     </tr>
 
    </table>

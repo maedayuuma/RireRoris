@@ -6,29 +6,29 @@
 
      <tr>
       <th class="border border-dark table-warning text-left">購入者</th>
-      <th class="border border-dark"><%= link_to @order.customer.full_name, admin_customer_path %></th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= link_to @order.customer.full_name, admin_customer_path(@order.customer.id) %></th>
      </tr>
 
      <tr>
       <th class="border border-dark table-warning text-left">注文日</th>
-      <th class="border border-dark"><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.created_at.strftime('%Y/%m/%d') %></th>
      </tr>
 
      <tr>
       <th class="border border-dark table-warning text-left">配送先</th>
-      <th class="border border-dark"><%= @order.customer.address %></th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.customer.address %></th>
      </tr>
 
      <tr>
       <th class="border border-dark table-warning text-left">支払い方法</th>
-      <th class="border border-dark"><%= @order.payment_method_i18n %></th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.payment_method_i18n %></th>
      </tr>
 
      <tr>
       <th class="border border-dark table-warning text-left">注文ステータス</th>
 　    <%= form_with model: @order, url:admin_order_path, local:true do |f| %>
 
-      <th class="border border-dark">
+      <th class="border border-dark" style="background-color: #f9ffff;">
         <%= f.select :status, Order.statuses_i18n.keys.map{|k| [I18n.t("enums.order.status.#{k}"), k]} %>
         <%= f.submit "更新",class: "btn btn-success" %>
 　      <% end %>
@@ -42,16 +42,16 @@
     <table class="table table-borderless">
      <tr>
       <th class="border border-dark table-warning text-left">商品合計</th>
-      <th class="border border-dark"><%= @order.total_price %>円</th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.total_price %>円</th>
      </tr>
 
      <tr>
       <th class="border border-dark table-warning text-left">送料</th>
-      <th class="border border-dark"><%= @shipping_fee %>円</th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @shipping_fee %>円</th>
      </tr>
      <tr>
       <th class="border border-dark table-warning text-left">請求金額合計</th>
-      <th class="border border-dark"><%= @order.total_price + @shipping_fee %>円</th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.total_price + @shipping_fee %>円</th>
      </tr>
     </table>
   </div>
@@ -71,13 +71,13 @@
 
      <% @order_items.each do |order_item| %>
      <tr>
-      <td class="border border-dark"><%= order_item.item.name %></td>
-      <td class="border border-dark"><%= order_item.item.add_tax_sales_price %></td>
-      <td class="border border-dark"><%= order_item.quantity %></td>
-      <td class="border border-dark"><%= order_item.item.add_tax_sales_price*order_item.quantity %></td>
+      <td class="border border-dark" style="background-color: #f9ffff;"><%= order_item.item.name %></td>
+      <td class="border border-dark" style="background-color: #f9ffff;"><%= order_item.item.add_tax_sales_price %></td>
+      <td class="border border-dark" style="background-color: #f9ffff;"><%= order_item.quantity %></td>
+      <td class="border border-dark" style="background-color: #f9ffff;"><%= order_item.item.add_tax_sales_price*order_item.quantity %></td>
       <%= form_with model: order_item, url:admin_orders_detail_path(order_item), local:true do |f| %>
-      <td class="border border-dark"><%= f.select :making_status, OrderItem.making_statuses_i18n.keys.map{|k| [I18n.t("enums.order_item.making_status.#{k}"), k]} %></td>
-      <th class="border border-dark"><%= f.submit "更新",class: "btn btn-success" %></th>
+      <td class="border border-dark" style="background-color: #f9ffff;"><%= f.select :making_status, OrderItem.making_statuses_i18n.keys.map{|k| [I18n.t("enums.order_item.making_status.#{k}"), k]} %></td>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= f.submit "更新",class: "btn btn-success" %></th>
      </tr>
      <% end %>
      <% end %>

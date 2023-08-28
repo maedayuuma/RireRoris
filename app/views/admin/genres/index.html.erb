@@ -1,5 +1,5 @@
 <div class="container">
- <h5 class="text-center pl-5 pr-5 mt-5">◆ ジャンル一覧・追加 ◆</h5>
+ <h5 class="text-center pl-5 pr-5">◆ ジャンル一覧・追加 ◆</h5>
   <div class="row">
    <div class="col mt-5">
 
@@ -23,8 +23,8 @@
 
       <% @genres.each do |genre| %>
         <tr>
-         <td class="border-dark"><%= genre.name %></td>
-         <td class="border-dark"><%= link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-primary" %></td>
+         <td class="border-dark" style="background-color: #f9ffff;"><%= genre.name %></td>
+         <td class="border-dark" style="background-color: #f9ffff;"><%= link_to "編集", edit_admin_genre_path(genre.id), class: "btn btn-primary" %></td>
         </tr>
       <% end %>
      </table>

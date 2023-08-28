@@ -11,13 +11,13 @@
 
           <% @customers.each do |customer| %>
             <tr>
-              <td class="border-dark"><%= customer.id %></td>
-                <td class="border-dark"><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
-                <td class="border-dark"><%= customer.email %></td>
-              <td class="border-dark"><%= customer.customer_status %></td>
+              <td class="border-dark" style="background-color: #f9ffff;"><%= customer.id %></td>
+                <td class="border-dark" style="background-color: #f9ffff;"><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+                <td class="border-dark" style="background-color: #f9ffff;"><%= customer.email %></td>
+              <td class="border-dark" style="background-color: #f9ffff;"><%= customer.customer_status %></td>
             </tr>
           <% end %>
-        <%= paginate @customers %>
+        <div class="text-center"><%= paginate @customers %></div>
       </table>
     </div>
   </div>
