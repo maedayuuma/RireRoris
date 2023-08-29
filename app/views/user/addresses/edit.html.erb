@@ -1,8 +1,8 @@
 <div class='container'>
-<h3 class="text-center mt-5 mb-3">◆ 配送先編集 ◆</h3>
 <div class='row mt-5'>
 <div class="col-1"></div>
 <div class="col-sm-8 px-sm-0 offset-sm-1">
+  <h3 class="text-center mt-5 mb-3">◆ 配送先編集 ◆</h3>
 
 <%= form_with model: @addresses do |f| %>
 <table class="table table-borderless">
@@ -23,11 +23,10 @@
    </tr>
 
    <tr>
-    <h5><%= f.submit "変更を保存", class: "btn btn-primary mt-4"%></h5>
+    <h5><%= f.submit "変更を保存", class: "btn btn-primary mt-4 mb-5"%></h5>
    </tr>
 </table>
 <% end %>
-
 </div>
 </div>
 </div>

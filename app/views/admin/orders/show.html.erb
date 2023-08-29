@@ -1,8 +1,8 @@
 <div class="container">
-<h5 class="table text-center pl-5 pr-5 mt-5"><strong>◆  注文履歴詳細  ◆</strong></h5>
  <div class="row">
-  <div class="col">
+  <div class="col-7">
     <table class="table table-borderless">
+     <h5 class="table text-center pl-5 pr-5 mt-5"><strong>◆  注文履歴詳細  ◆</strong></h5>
 
      <tr>
       <th class="border border-dark table-warning text-left">購入者</th>
@@ -37,25 +37,7 @@
 
     </table>
    </div>
-
-     <div class="col-3 mt-4 ml-5">
-    <table class="table table-borderless">
-     <tr>
-      <th class="border border-dark table-warning text-left">商品合計</th>
-      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.total_price %>円</th>
-     </tr>
-
-     <tr>
-      <th class="border border-dark table-warning text-left">送料</th>
-      <th class="border border-dark" style="background-color: #f9ffff;"><%= @shipping_fee %>円</th>
-     </tr>
-     <tr>
-      <th class="border border-dark table-warning text-left">請求金額合計</th>
-      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.total_price + @shipping_fee %>円</th>
-     </tr>
-    </table>
-  </div>
-  </div>
+ </div>
 
 <div class="row">
   <div class="col-xs-4">
@@ -81,6 +63,24 @@
      </tr>
      <% end %>
      <% end %>
+    </table>
+  </div>
+  
+  <div class="col-3 mt-5 ml-5">
+    <table class="table table-borderless mt-4">
+     <tr>
+      <th class="border border-dark table-warning text-left">商品合計</th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.total_price %>円</th>
+     </tr>
+
+     <tr>
+      <th class="border border-dark table-warning text-left">送料</th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @shipping_fee %>円</th>
+     </tr>
+     <tr>
+      <th class="border border-dark table-warning text-left">請求金額合計</th>
+      <th class="border border-dark" style="background-color: #f9ffff;"><%= @order.total_price + @shipping_fee %>円</th>
+     </tr>
     </table>
   </div>
  </div>

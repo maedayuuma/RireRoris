@@ -1,8 +1,8 @@
 <div class='container'>
-  <h4 class="text-center pl-5 pr-5 mt-5 ml-5 mt-5 mb-5">◆ 会員情報編集 ◆</h4>
     <div class='row mt-2'>
       <div class="col-1"></div>
       <div class="col-sm-7 px-sm-2 offset-sm-2">
+        <h4 class="text-center pl-5 pr-5 mt-5 mb-5 mr-5">◆ 会員情報編集 ◆</h4>
 
         <%= form_with model: @customer, url:customers_information_path(@customer), local:true do |f| %>
           <table class="table table-borderless">
@@ -39,7 +39,7 @@
             </tr>
 
             <tr>
-              <td><%= f.submit "編集内容を保存", class:"btn btn-success" %></td>
+              <td><%= f.submit "編集内容を保存", class:"btn btn-primary" %></td>
             <tr>
               <% end %>
            </table>
