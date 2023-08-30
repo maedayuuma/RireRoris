@@ -12,11 +12,11 @@
         <%= link_to item_path(item.id) do %>
           <div class="col-md-6 col-lg-2">
 
-            <div class="card mb-4" style="width: 248px;">
-            <div class="card-header p-4" style="background-color: #eaeaff"><%= image_tag item.get_image, size: '200x200' %>
-            <h5 class="text-left mt-2" style="color:#ea5550;">￥<%= (item.without_tax_price * 1.1).round %> </h5>
+            <div class="card mb-1" style="width: 248px;">
+            <div class="card-header p-4" style="background-color: #ffffff"><%= image_tag item.get_image, size: '200x200' %>
             </div>
             </div>
+            <h5 class="text-left mb-3" style="color:#ea5550;">￥<%= (item.without_tax_price * 1.1).round %> </h5>
 
 		      </div>
         <% end %>

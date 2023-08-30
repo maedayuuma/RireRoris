@@ -3,15 +3,20 @@
 <div class='container mt-2'>
 
     <div class-"col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h3 class="font-weight-bold m-4 text-danger">人気商品!!</h3>
+    <h2 class="display-3 font-weight-bold mt-5 mb-4" style="color: #ff00ff;">RIRE RORIS</h2>
+    <h5 class="font-weight-bold mb-5 mt-5" style="color: #ff3399">多彩なデザインでワンランク上のSTEPへ<br>
+    男性、女性ともにお届けする華やかなデザインを
+    RIRERORISのアクセサリーでお楽しみください。</h5>
+    <h3 class="font-weight-bold mt-4 mb-3 text-danger">◆ 人気商品 ◆</h3>
       <div class="row">
         <% @items.each do |item| %>
-	        <div class="col-md-3 mb-5">
+	        <div class="col-md-3 mb-5 mt-3">
 		        <%= link_to item_path(item.id) do %>
-                <div class="card mr-3 mb-3" style="width: 248px;">
-                <div class="card-header p-4" style="background-color: #eaeaff"><%= image_tag item.get_image, size: '200x200' %>
+                <div class="card mr-3 mb-1" style="width: 248px;">
+                <div class="card-header p-4" style="background-color: #ffffff"><%= image_tag item.get_image, size: '200x200' %>
                 </div>
                 </div>
+                <h5 class="text-left mb-3" style="color:#ea5550;">￥<%= (item.without_tax_price * 1.1).round %> </h5>
 		        <% end %>
 		    </div>
 	    <% end %>

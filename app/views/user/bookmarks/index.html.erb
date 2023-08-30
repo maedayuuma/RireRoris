@@ -10,7 +10,7 @@
      <%= link_to item_path(bookmark.item.id) do %>
 
       <div class="card mr-3 mb-5" style="width: 285px;">
-        <div class="card-header p-3" style="background-color: #eaeaff"><%= image_tag bookmark.item.get_image, size: '250x250' %>
+        <div class="card-header p-3" style="background-color: #ffffff"><%= image_tag bookmark.item.get_image, size: '250x250' %>
 
             <%#お気に入り機能%>
              <% if bookmark.item.bookmarked_by?(current_customer) %>
